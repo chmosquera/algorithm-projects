@@ -1,0 +1,43 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "HelloGoodbye",
+            "request": "launch",
+            "mainClass": "HelloGoodbye",
+            "projectName": "AlgorithmsCoursera_6ceb4317"
+        },
+        {
+            "type": "java",
+            "name": "HelloWorld",
+            "request": "launch",
+            "mainClass": "HelloWorld",
+            "projectName": "AlgorithmsCoursera_6ceb4317"
+        },
+        {
+            "type": "java",
+            "name": "QuickUnion",
+            "request": "launch",
+            "mainClass": "QuickUnion",
+            "projectName": "AlgorithmsCoursera_6ceb4317",
+            "args": "< ./resources/tinyUF.txt"
+        },
+        {
+            "type": "java",
+            "name": "RandomWord",
+            "request": "launch",
+            "mainClass": "RandomWord",
+            "projectName": "AlgorithmsCoursera_6ceb4317"
+        }
+    ]
+}

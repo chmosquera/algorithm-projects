@@ -6,6 +6,14 @@
     "configurations": [
         {
             "type": "java",
+            "name": "WeightedQuickUnion",
+            "request": "launch",
+            "mainClass": "WeightedQuickUnion",
+            "projectName": "AlgorithmsCoursera_6ceb4317",
+            "args": "< ./resources/largeUF.txt"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
@@ -30,7 +38,7 @@
             "request": "launch",
             "mainClass": "QuickUnion",
             "projectName": "AlgorithmsCoursera_6ceb4317",
-            "args": "< ./resources/tinyUF.txt"
+            "args": "< ./resources/largeUF.txt"
         },
         {
             "type": "java",

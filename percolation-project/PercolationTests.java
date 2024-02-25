@@ -4,10 +4,10 @@ public class PercolationTests {
     
     public static void main(String [] args) {
         PercolationTests percolationTest = new PercolationTests();
-        // percolationTest.testOpen();
-        // percolationTest.testIsFull();
-        // percolationTest.testNumberOfOpenSites();
-        // percolationTest.testPercolate();
+        percolationTest.testOpen();
+        percolationTest.testIsFull();
+        percolationTest.testNumberOfOpenSites();
+        percolationTest.testPercolate();
         percolationTest.testPercolateComplex();
 
 
@@ -67,7 +67,7 @@ public class PercolationTests {
 
         // isFull - assert false
         // Neither of these sites should be full
-        result = P.isFull(1, 1) || P.isFull(2, 1);
+        result = P.isFull(1, 1) || P.isFull(2, 1) || P.isFull(4, 0);
         try {            
             assert result == false : "Test failed: 'isFull - assert false'";            
             System.out.printf("Test succeeded: 'isFull - assert false'\n");
@@ -139,14 +139,11 @@ public class PercolationTests {
         boolean result = false;
 
         P.open(0,0);
-        P.open(0,1);
+        P.open(1,0);
 
-        P.open(0,2);
-        P.open(0,3);
-        P.open(0,4);
-
-        result = P.isFull(0, 4);
-        System.out.printf("isFull(0,4)? %s\n", Boolean.toString(result));
+        P.open(2,0);
+        P.open(3,0);
+        P.open(4,0);
 
         result = P.percolates();
         try {

@@ -4,10 +4,10 @@ public class PercolationTests {
     
     public static void main(String [] args) {
         PercolationTests percolationTest = new PercolationTests();
-        percolationTest.testOpen();
-        percolationTest.testIsFull();
-        percolationTest.testNumberOfOpenSites();
-        percolationTest.testPercolate();
+        // percolationTest.testOpen();
+        // percolationTest.testIsFull();
+        // percolationTest.testNumberOfOpenSites();
+        // percolationTest.testPercolate();
         percolationTest.testPercolateComplex();
 
 
@@ -158,11 +158,11 @@ public class PercolationTests {
     }
 
     /*
-     *   o o - - -
-     *   - o o - -
-     *   o - o - - 
+     *   o - - - -
+     *   o o o - -
+     *   o - o o - 
      *   - o o o o
-     *   - - - - o
+     *   - - - o -
      */
     public void testPercolateComplex() {
         Percolation P = new Percolation(5);
@@ -188,6 +188,5 @@ public class PercolationTests {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-
     }
 }

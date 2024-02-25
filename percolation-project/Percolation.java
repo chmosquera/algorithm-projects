@@ -4,9 +4,18 @@ public class Percolation {
 
     boolean[][] sites;
     int[] connected;
+    int[] sizes;
     int n;
     int openSiteCount = 0;
     
+    private void printSize() {
+        for (int i = 0; i < sizes.length; i++) {
+            if ((sizes[i]) > 1) {
+                System.out.printf("Index: %d is a root with %d connections\n", i, sizes[i]);
+            }
+        }
+    }
+
     private boolean inBounds(int row, int col) {
         if ((row < n && row >= 0) && (col < n && col >= 0)) {
             return true;
@@ -14,19 +23,32 @@ public class Percolation {
         return false;
     } 
 
+    // O(2logn) for finding two roots. By connected the root of smaller tree to root of larger tree, 
+    //  we create a wider tree, so it takes less steps to find the root. 
     private void connect(int p, int q) {
-        connected[root(p)] = root(q);       // make more efficient later, O(2n) -> O(n)
+        int root_p = root(p);
+        int root_q = root(q);
+
+        if (root_p == root_q) 
+            return;
+
+        if (sizes[root_p] <= sizes[root_q]) {            
+            connected[root_p] = root_q;            
+            sizes[root_q] += sizes[root_p];
+            sizes[root_p] = 0;
+        } else {
+            connected[root_q] = root_p;
+            sizes[root_p] += sizes[root_q];
+            sizes[root_q] = 0;
+        }
     }
 
     // O(2n)
     private boolean isConnected(int p, int q) {
-        //      2  23 23 23
-        // idx: 1  2  9  23
-
         return root(p) == root(q);
     }
 
-    // O(n)
+    // O(logn)
     private int root(int idx) {
         if (connected[idx] == idx) 
             return idx;        
@@ -36,7 +58,7 @@ public class Percolation {
     private int getIndex(int row, int col) {
         if (!inBounds(row, col)) {
             throw new IllegalArgumentException(
-                String.format("open() was called on a site outside of the range: row=%d, col=%d")
+                String.format("open() was called on a site outside of the range: row=%d, col=%d", row, col)
             );
         }
         return n * row + col;
@@ -54,9 +76,11 @@ public class Percolation {
 
         this.sites = new boolean[n][n];
         this.connected = new int[(int)Math.pow(n, 2.0)];
+        this.sizes = new int[connected.length];
 
         for (int i = 0; i < (Math.pow(n, 2.0) - 1); i++) {
             connected[i] = i;
+            sizes[i] = 1;
         }
     }
 
@@ -65,7 +89,7 @@ public class Percolation {
         
         if (!inBounds(row, col)) {
             throw new IllegalArgumentException(
-                String.format("open() was called on a site outside of the range: row=%d, col=%d")
+                String.format("open() was called on a site outside of the range: row=%d, col=%d", row, col)
             );
         }
 
@@ -104,7 +128,7 @@ public class Percolation {
         
         if (!inBounds(row, col)) {
             throw new IllegalArgumentException(
-                String.format("open() was called on a site outside of the range: row=%d, col=%d")
+                String.format("open() was called on a site outside of the range: row=%d, col=%d", row, col)
             );
         }        
 
@@ -117,7 +141,7 @@ public class Percolation {
         
         if (!inBounds(row, col)) {
             throw new IllegalArgumentException(
-                String.format("open() was called on a site outside of the range: row=%d, col=%d")
+                String.format("open() was called on a site outside of the range: row=%d, col=%d", row, col)
             );
         }
 

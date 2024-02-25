@@ -2,17 +2,11 @@
  *  Compilation:  javac RandomWord.java
  *  Execution:    java RandomWord
  *
- *  Randomly selects a name from user-provided standard input.
+ *  Randomly selects a word from user-provided standard input.
  *
- *  % java RandomWord
- *  Michael
- *  Isabelle
- *  Jacob
- *  Liam
- *  Jessica
- *  Chantel
- *  quit
- *  The champion is Liam
+ *  % touch headsTails.txt
+ *  % echo "Heads Tails" >> headsTails.txt
+ *  % java RandomWord << headsTails.txt
  ******************************************************************************/
 
 import edu.princeton.cs.algs4.StdOut;
@@ -23,7 +17,7 @@ public class RandomWord {
     public static void main(String[] args) {
 
         int i = 0;
-        String champion = new String();
+        String champion = "";
         while (!StdIn.isEmpty()) {
 
             String next = StdIn.readString();
@@ -35,7 +29,7 @@ public class RandomWord {
             }
 
         }
-        StdOut.println("The champion is " + champion);
+        StdOut.println(champion);
 
     }   
 }
